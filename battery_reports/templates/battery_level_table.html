@@ -1,0 +1,42 @@
+<h1>Low battery level (less than {{ battery_low_threshold }}{{ battery_unit }})</h1>
+<table style="width:100%">
+    <tr>
+        <th>Device</th>
+        <th>Type</th>
+        <th>Location</th>
+        <th>Battery Level</th>
+        <th>Battery Unit</th>
+    </tr>
+    {% for item in devices_low_battery_level %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.type }}</td>
+            <td align="center">{{ item.location }}</td>
+            <td align="center">{{ item.battery_value }}</td>
+            <td align="center">{{ battery_unit }}</td>
+        </tr>
+    {% endfor %}
+</table>
+<h1>Acceptable battery level</h1>
+<table style="width:100%">
+    <col align="left">
+    <col align="center">
+    <col align="center">
+    <col align="center">
+    <tr>
+        <th>Device</th>
+        <th>Type</th>
+        <th>Location</th>
+        <th>Battery Level</th>
+        <th>Battery Unit</th>
+    </tr>
+    {% for item in devices_acceptable_battery_level %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.type }}</td>
+            <td align="center">{{ item.location }}</td>
+            <td align="center">{{ item.battery_value }}</td>
+            <td align="center">{{ battery_unit }}</td>
+        </tr>
+    {% endfor %}
+</table>

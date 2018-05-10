@@ -1,0 +1,5 @@
+boto3
+requests==2.18.4
+botocore
+jinja2
+lambda_setuptools

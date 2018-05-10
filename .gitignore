@@ -1,0 +1,6 @@
+.idea
+.vscode
+**/dist/
+**/build/
+**/*.egg-info/
+**/*_template.yaml

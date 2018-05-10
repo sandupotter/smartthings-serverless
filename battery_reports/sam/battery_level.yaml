@@ -1,0 +1,50 @@
+AWSTemplateFormatVersion : '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Create a period email report of battery level for all battery-enabled devices in a SmartThings account
+
+Parameters:
+  SmartThingsAPIKey:
+    Type: String
+    Description: The SmartThings API Key.
+  Schedule:
+    Type: String
+    Default: rate(1 day)
+    Description: A CloudWatch Event Schedule Expression at which to invoke this function; see http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html.
+  FromAddress:
+    Type: String
+    Description: The email used to sent the report from.
+  ToAddress:
+    Type: String
+    Description: The email address where the report will be sent.
+  MinAcceptableBatteryLevel:
+    Type: String
+    Default: 10
+    Description: A percentage value for a minimum acceptable battery level - it will be used in the email report.
+
+
+Resources:
+  BatteryLevelFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: battery_reports.battery_level.lambda_handler
+      Runtime: python3.6
+      Timeout: 300
+      CodeUri: ./dist/smart-things-serverless-0.1.zip
+      Environment:
+        Variables:
+          AUTHZ_TOKEN: !Ref SmartThingsAPIKey
+          FROM_ADDRESS: !Ref FromAddress
+          TO_ADDRESS: !Ref ToAddress
+          MIN_ACCEPTABLE_BATTERY_LEVEL: !Ref MinAcceptableBatteryLevel
+      Events:
+        ScheduledEvent:
+          Type: Schedule
+          Properties:
+            Schedule: !Ref Schedule
+      Policies:
+        -
+          SESCrudPolicy:
+            IdentityName: !Ref FromAddress
+        -
+          SESCrudPolicy:
+            IdentityName: !Ref ToAddress

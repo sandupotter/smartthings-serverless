@@ -1,6 +1,5 @@
 from common_utilities.smartthings import SmartThingsClient
 import os
-import traceback
 import json
 from common_utilities import setuplogger
 from battery_reports import html_generator
@@ -10,10 +9,7 @@ logger = None
 
 
 def lambda_handler(event, context):
-    try:
-        process(True)
-    except:
-        print(traceback.format_exc())
+    process(True)
 
 
 def process(lambda_invocation):

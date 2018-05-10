@@ -1,4 +1,4 @@
-# SmartThings Battery Level Report 
+# [SmartThings](https://www.smartthings.com/) Battery Level Report 
 
 Lambda that runs periodically (based on a configuration) and performs the following functions:
 * reads the battery level for all the battery enabled devices associated with the configured SmartThings account

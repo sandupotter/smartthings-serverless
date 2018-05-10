@@ -28,7 +28,7 @@ Prerequisites:
 Execute the following CLI commands/perform tasks - change **_user@example.com_** to the appropriate address:
  
 1. Initiate email verification: _aws ses verify-email-identity --email-address **user@example.com**_
-2. In the email's inbox you should have an email with the subject **_Amazon Web Services - Email Address Verification Request in region &lt;selected region from the console&gt;_**. Use the resend link in the SES emails list to resend the email if you did not receive it (or check the junk folder).
+2. In the email's inbox you should have an email with the subject **_Amazon Web Services - Email Address Verification Request in region &lt;selected region from the console&gt;_**. 
 3. Click the verification link
 4. Check the email verification status: _aws ses get-identity-verification-attributes --identities **user@example.com**_
-5. If the Verification Status in the response is Success the email address ready to be used to send/receive SmartThings reports/alerts emails.
+5. If the Verification Status in the response is Success the email address is ready to be used to send/receive SmartThings reports/alerts emails.

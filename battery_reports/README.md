@@ -10,5 +10,5 @@ Lambda that runs periodically (based on a configuration) and performs the follow
 
 **Prerequisites (needed before deploying the application)**
 
-1. Generate a [SmartThings API Key](../docs/smart_things_create_api_key/README.md)
-2. [Setup](../docs/ses_register_email/README.md) a from and to email address in AWS SES _(repeat the process twice for both the **from** and **to** email address)_
+1. Generate a [SmartThings API Key](https://github.com/sandupotter/smartthings-serverless/blob/master/docs/smart_things_create_api_key/README.md)
+2. [Setup](https://github.com/sandupotter/smartthings-serverless/blob/master/docs/ses_register_email/README.md) a FROM and a TO email address in AWS SES _(repeat the process twice for both the **from** and **to** email address)_

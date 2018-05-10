@@ -29,7 +29,7 @@ Resources:
       Handler: battery_reports.battery_level.lambda_handler
       Runtime: python3.6
       Timeout: 300
-      CodeUri: ./dist/smart-things-serverless-0.1.zip
+      CodeUri: ../../dist/smart-things-serverless-0.1.zip
       Environment:
         Variables:
           AUTHZ_TOKEN: !Ref SmartThingsAPIKey

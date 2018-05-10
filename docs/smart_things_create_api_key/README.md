@@ -4,7 +4,7 @@ Prerequisites:
 
 - You need to have a SmartThings account with admin role
 
-1. Log in to the [SmartThings/Samsung Account](https://account.smartthings.com/login)
+1. Log into your [SmartThings/Samsung Account](https://account.smartthings.com/login)
 2. Once logged in you should be taken to the [Personal access tokens](#https://account.smartthings.com/tokens)
 3. Click the _**GENERATE NEW TOKEN**_ button
 4. Provide some name for your token

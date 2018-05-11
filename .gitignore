@@ -5,3 +5,4 @@ local_scripts
 **/build/
 **/*.egg-info/
 **/*_template.yaml
+tests

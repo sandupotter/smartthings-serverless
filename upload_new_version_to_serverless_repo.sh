@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+#Script that builds the zip file with the python code, creates the SAM output template and publishes
+#a new version to serverless repo (after creating a new tag in Git)
 function get_next_tag()
 {
   latest_tag=`git describe --abbrev=0 --tags`
@@ -30,7 +32,7 @@ SOURCE_URL=$4
 NEXT_TAG=$(get_next_tag)
 LATEST_TAG=`git describe --abbrev=0 --tags`
 
-if [ $# -eq 3 ]
+if [ $# -eq 4 ]
 then
   SEMANTIC_VERSION=$NEXT_TAG
 else
@@ -47,7 +49,6 @@ fi
 AWS_SEMANTIC_VERSION=`echo $SEMANTIC_VERSION | cut -c 2-`
 
 SOURCE_URL=`echo $SOURCE_URL | sed -e "s/version/$SEMANTIC_VERSION/g"`
-
 
 aws cloudformation package --template-file $SAM_TEMPLATE --s3-bucket sandupotter-smart-things-serverless --output-template-file $SAM_TEMPLATE_OUTPUT
 aws serverlessrepo create-application-version \

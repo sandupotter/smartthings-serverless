@@ -1,0 +1,61 @@
+<h1>Low temperature (less than {{ temperature_low_limit }}{{ temperature_unit }})</h1>
+<table style="width:100%">
+    <tr>
+        <th>Device</th>
+        <th>Type</th>
+        <th>Location</th>
+        <th>Temperature Level</th>
+        <th>Temperature Unit</th>
+    </tr>
+    {% for item in devices_low_temperature_level %}
+        <tr>
+            <td align="center">{{ item.name }}</td>
+            <td align="center">{{ item.type }}</td>
+            <td align="center">{{ item.location }}</td>
+            <td align="center">{{ item.temperature_value }}</td>
+            <td align="center">{{ temperature_unit }}</td>
+        </tr>
+    {% endfor %}
+</table>
+<h1>High temperature (more than {{ temperature_high_limit }}{{ temperature_unit }})</h1>
+<table style="width:100%">
+    <tr>
+        <th>Device</th>
+        <th>Type</th>
+        <th>Location</th>
+        <th>Temperature Level</th>
+        <th>Temperature Unit</th>
+    </tr>
+    {% for item in devices_high_temperature_level %}
+        <tr>
+            <td align="center">{{ item.name }}</td>
+            <td align="center">{{ item.type }}</td>
+            <td align="center">{{ item.location }}</td>
+            <td align="center">{{ item.temperature_value }}</td>
+            <td align="center">{{ temperature_unit }}</td>
+        </tr>
+    {% endfor %}
+</table>
+<h1>Acceptable temperature level</h1>
+<table style="width:100%">
+    <col align="left">
+    <col align="center">
+    <col align="center">
+    <col align="center">
+    <tr>
+        <th>Device</th>
+        <th>Type</th>
+        <th>Location</th>
+        <th>Temperature Level</th>
+        <th>Temperature Unit</th>
+    </tr>
+    {% for item in devices_acceptable_temperature_level %}
+        <tr>
+            <td align="center">{{ item.name }}</td>
+            <td align="center">{{ item.type }}</td>
+            <td align="center">{{ item.location }}</td>
+            <td align="center">{{ item.temperature_value }}</td>
+            <td align="center">{{ temperature_unit }}</td>
+        </tr>
+    {% endfor %}
+</table>

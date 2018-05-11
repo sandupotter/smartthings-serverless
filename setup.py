@@ -13,4 +13,5 @@ setup(name='smart-things-serverless',
       zip_safe=False,
       package_data={
           'battery_reports': ['templates/*.html'],
+          'temperature_reports': ['templates/*.html']
       })

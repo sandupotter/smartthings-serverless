@@ -9,8 +9,8 @@
     </tr>
     {% for item in devices_low_battery_level %}
         <tr>
-            <td>{{ item.name }}</td>
-            <td>{{ item.type }}</td>
+            <td align="center">{{ item.name }}</td>
+            <td align="center">{{ item.type }}</td>
             <td align="center">{{ item.location }}</td>
             <td align="center">{{ item.battery_value }}</td>
             <td align="center">{{ battery_unit }}</td>
@@ -32,8 +32,8 @@
     </tr>
     {% for item in devices_acceptable_battery_level %}
         <tr>
-            <td>{{ item.name }}</td>
-            <td>{{ item.type }}</td>
+            <td align="center">{{ item.name }}</td>
+            <td align="center">{{ item.type }}</td>
             <td align="center">{{ item.location }}</td>
             <td align="center">{{ item.battery_value }}</td>
             <td align="center">{{ battery_unit }}</td>

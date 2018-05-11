@@ -1,13 +1,14 @@
 # [SmartThings](https://www.smartthings.com/) Battery Level Report 
 
-_Use case: Know the current battery levels for SmartThings devices and quickly see which devices need a batter change_
+_Use case: Know the current temperature levels reported by SmartThings devices that have a temperature sensor_
 
 Lambda that runs periodically (based on a configuration) and performs the following functions:
-* reads the battery level for all the battery enabled devices associated with the configured SmartThings account
-* sends an email with 2 lists of devices: 
-  * devices with a battery level lower or equal than the configured "Minimum Acceptable Battery Level"
+* reads the temperature reported devices that have a temperature sensor and are associated with the configured SmartThings account
+* sends an email with 3 lists of devices: 
+  * devices reporting a temperature lower or equal than the configured "Low Temperature Limit"
+  * devices reporting a temperature higher or equal than the configured "High Temperature Limit"
   * the rest of the devices
-* the lists are ordered based on the remaining battery level
+* the lists are ordered based on the temperarture level
 * the email is sent through the AWS Simple Email Service using the configured from and to addresses
 
 **Prerequisites (needed before deploying the application)**

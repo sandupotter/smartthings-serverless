@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion : '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: Create a periodic email report of battery level for all battery-enabled devices in a SmartThings account
+Description: Create a periodic email report of temperature level for all devices with a temperature sensor in a SmartThings account
 
 Parameters:
   SmartThingsAPIKey:
@@ -16,17 +16,24 @@ Parameters:
   ToAddress:
     Type: String
     Description: The email address where the report will be sent.
-  MinAcceptableBatteryLevel:
+  TemperatureUnit:
+    Type: String
+    Default: F
+    Description: "Temperature unit: F or C (Fahrenheit or Celsius)"
+  LowTemperatureLimit:
     Type: Number
-    Default: 10
-    Description: A percentage value for a minimum acceptable battery level - it will be used in the email report.
-
+    Default: 40
+    Description: The low temperature limit (sensor with a value lower than this limit will be grouped together in the report)
+  HighTemperatureLimit:
+    Type: Number
+    Default: 80
+    Description: The high temperature limit (sensor with a value lower than this limit will be grouped together in the report)
 
 Resources:
-  BatteryLevelReportFunction:
+  TemperatureLevelReportFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: battery_reports.battery_level.lambda_handler
+      Handler: temperature_reports.temperature_measurement.lambda_handler
       Runtime: python3.6
       Timeout: 300
       CodeUri: ../../dist/smart-things-serverless-0.1.zip
@@ -35,7 +42,9 @@ Resources:
           AUTHZ_TOKEN: !Ref SmartThingsAPIKey
           FROM_ADDRESS: !Ref FromAddress
           TO_ADDRESS: !Ref ToAddress
-          MIN_ACCEPTABLE_BATTERY_LEVEL: !Ref MinAcceptableBatteryLevel
+          TEMPERATURE_UNIT: !Ref TemperatureUnit
+          LOW_TEMPERATURE_LIMIT: !Ref LowTemperatureLimit
+          HIGH_TEMPERATURE_LIMIT: !Ref HighTemperatureLimit
       Events:
         ScheduledEvent:
           Type: Schedule
